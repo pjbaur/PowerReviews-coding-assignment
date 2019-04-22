@@ -48,5 +48,5 @@ The starting code may not be accurate, and it is certainly not complete. Identif
 #### Extra credit
 Return restaurants based on how close they are to the user. For example, given latitude and longitude, return a list of restaurants that are ordered by distance away.
 
-#### How to return the project ot us
+#### How to return the project to us
 Your code should be version controlled and publicly accessible for us to review (github/bit-bucket/gitlab/etc)
