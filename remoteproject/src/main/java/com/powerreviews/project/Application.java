@@ -1,21 +1,25 @@
 package com.powerreviews.project;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.powerreviews.project.persistence.RestaurantEntity;
-import com.powerreviews.project.persistence.RestaurantRepository;
-import com.powerreviews.project.persistence.UserEntity;
-import com.powerreviews.project.persistence.UserRepository;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import org.springframework.cloud.config.server.EnableConfigServer;
+import org.springframework.context.annotation.Bean;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.powerreviews.project.persistence.Restaurant;
+import com.powerreviews.project.persistence.RestaurantRepository;
+import com.powerreviews.project.persistence.ReviewRepository;
+import com.powerreviews.project.persistence.UserEntity;
+import com.powerreviews.project.persistence.UserRepository;
+
 @SpringBootApplication()
+//@EnableConfigServer
 public class Application {
 
 	public static void main(String[] args) {
@@ -23,15 +27,15 @@ public class Application {
 	}
 
 	@Bean
-	CommandLineRunner runner(RestaurantRepository restaurantRepository, UserRepository userRepository) {
+	CommandLineRunner runner(RestaurantRepository restaurantRepository, UserRepository userRepository, ReviewRepository reviewRepository) {
 		return args -> {
 			// read json and write to db
 			ObjectMapper mapper = new ObjectMapper();
 
-			TypeReference<List<RestaurantEntity>> restaurantTypeReference = new TypeReference<List<RestaurantEntity>>(){};
+			TypeReference<List<Restaurant>> restaurantTypeReference = new TypeReference<List<Restaurant>>(){};
 			InputStream inputStream = TypeReference.class.getResourceAsStream("/json/restaurants.json");
 			try {
-				List<RestaurantEntity> restaurants = mapper.readValue(inputStream, restaurantTypeReference);
+				List<Restaurant> restaurants = mapper.readValue(inputStream, restaurantTypeReference);
 				//save restaurants to the database
 				restaurantRepository.saveAll(restaurants);
 			} catch (IOException e){
@@ -47,6 +51,16 @@ public class Application {
 			} catch (IOException e){
 				System.out.println("Unable to save users: " + e.getMessage());
 			}
+			
+//			TypeReference<List<Review>> reviewTypeReference = new TypeReference<List<Review>>(){};
+//			inputStream = TypeReference.class.getResourceAsStream("/json/reviews.json");
+//			try {
+//				List<Review> reviews = mapper.readValue(inputStream, reviewTypeReference);
+//				//save users to the database
+//				reviewRepository.saveAll(reviews);
+//			} catch (IOException e){
+//				System.out.println("Unable to save users: " + e.getMessage());
+//			}
 		};
 	}
 }

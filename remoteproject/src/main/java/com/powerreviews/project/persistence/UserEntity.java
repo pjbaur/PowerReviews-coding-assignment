@@ -6,6 +6,7 @@ import javax.persistence.Id;
 
 @Entity(name = "user")
 public class UserEntity {
+	//TODO - We want the Id to be assigned automatically. Delete the Setter and update Constructor.
     @Id
     private Integer id;
 
@@ -37,6 +38,7 @@ public class UserEntity {
 
     @Override
     public String toString() {
+    	// TODO - Do I want a { or a [ ?
         return "UserEntity{" +
                 "id=" + id +
                 "name='" + name + '\'' +

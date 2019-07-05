@@ -1,42 +1,80 @@
 package com.powerreviews.project.controller;
 
-import com.powerreviews.project.persistence.RestaurantEntity;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.powerreviews.project.persistence.Restaurant;
 import com.powerreviews.project.persistence.RestaurantRepository;
+
+import java.net.URI;
+import java.util.Collection;
+import java.util.List;
+
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.Resources;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 public class RestaurantController {
-    private final RestaurantRepository restaurantRepository;
+    
+	@Autowired
+	private RestaurantRepository restaurantRepository;
 
-    public RestaurantController(@Autowired RestaurantRepository restaurantRepository) {
-        this.restaurantRepository = restaurantRepository;
+    @GetMapping("/restaurant")
+    public List<Restaurant> retrieveAllRestaurants() {
+    	return restaurantRepository.findAll();
+    }
+    
+    @GetMapping(value = "/restaurant/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Resource<Restaurant> retrieveRestaurantById(@PathVariable Integer id) {
+        Restaurant restaurant = restaurantRepository.findById(id).orElse(null);
+        
+        Resource<Restaurant> resource = new Resource<Restaurant>(restaurant);
+        ControllerLinkBuilder linkTo = linkTo(methodOn(this.getClass()).retrieveRestaurantById(id));
+        
+        resource.add(linkTo.withSelfRel());
+        return resource;
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/restaurant/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RestaurantEntity> get(@PathVariable Integer id) {
-        RestaurantEntity restaurant = restaurantRepository.findById(id).orElse(null);
-        return new ResponseEntity<>(restaurant, new HttpHeaders(), restaurant == null ? HttpStatus.NOT_FOUND : HttpStatus.OK);
+    @RequestMapping(value = "/restaurant/type/{type}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Resources<Restaurant> get(@PathVariable String type) {
+        Collection<Restaurant> restaurants = restaurantRepository.findByType(type);
+        
+        Link link = linkTo(RestaurantController.class).withSelfRel();
+        Resources<Restaurant> resources = new Resources<Restaurant>(restaurants);
+        
+        return resources; 
     }
-
-    @ResponseBody
-    @RequestMapping(value = "/restaurant", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RestaurantEntity> post(@RequestBody RestaurantEntity restaurant) {
+    
+    @PostMapping(value = "/restaurant", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> post(@RequestBody Restaurant restaurant) {
         int id = restaurantRepository.maxId() + 1;
         restaurant.setId(id);
-        restaurantRepository.save(restaurant);
-        return new ResponseEntity<>(restaurant, new HttpHeaders(), HttpStatus.CREATED);
+        
+        Restaurant savedRestaurant = restaurantRepository.save(restaurant);
+        
+        URI location = ServletUriComponentsBuilder
+        	.fromCurrentRequest()
+        	.path("/{id}")
+        	.buildAndExpand(savedRestaurant.getId())
+        	.toUri();
+        
+        return ResponseEntity.created(location).build();
     }
 
     @ResponseBody
     @RequestMapping(value = "/restaurant", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RestaurantEntity> put(@RequestBody RestaurantEntity restaurant) {
-        RestaurantEntity updated = restaurantRepository.findById(restaurant.getId()).orElse(null);
+    public ResponseEntity<Restaurant> put(@RequestBody Restaurant restaurant) {
+        Restaurant updated = restaurantRepository.findById(restaurant.getId()).orElse(null);
         if (updated == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -48,10 +86,10 @@ public class RestaurantController {
         return new ResponseEntity<>(updated, new HttpHeaders(), HttpStatus.OK);
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/restaurant/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RestaurantEntity> delete(@PathVariable Integer id) {
-        restaurantRepository.deleteById(id);
+    @DeleteMapping(value = "/restaurant/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Restaurant> delete(@PathVariable Integer id) {
+         restaurantRepository.deleteById(id);
+    	
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

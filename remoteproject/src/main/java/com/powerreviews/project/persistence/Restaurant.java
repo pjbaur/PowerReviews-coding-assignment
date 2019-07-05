@@ -1,11 +1,18 @@
 package com.powerreviews.project.persistence;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.springframework.hateoas.ResourceSupport;
 
 @Entity(name = "restaurant")
-public class RestaurantEntity {
+public class Restaurant {
+	//TODO - We want the Id to be assigned automatically. Delete the Setter and update Constructor.
+	
     @Id
     private Integer id;
 
@@ -21,9 +28,12 @@ public class RestaurantEntity {
     @Column
     private String longitude;
 
-    public RestaurantEntity(){}
+    @OneToMany(mappedBy = "restaurant")
+    private List<Review> reviews;
+    
+    public Restaurant(){}
 
-    public RestaurantEntity(Integer id, String name, String type, String latitude, String longitude) {
+    public Restaurant(Integer id, String name, String type, String latitude, String longitude) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -65,15 +75,15 @@ public class RestaurantEntity {
 
     public String getType() {
         return type;
-
     }
 
     public void setType(String type) {
         this.type = type;
     }
-
+    
     @Override
     public String toString() {
+    	// TODO - Do I want a { or a [ ?
         return "RestaurantEntity{" +
                 "id=" + id +
                 "name='" + name + '\'' +
