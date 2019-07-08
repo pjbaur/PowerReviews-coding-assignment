@@ -1,10 +1,12 @@
 package com.powerreviews.project.client;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.powerreviews.project.persistence.RestaurantEntity;
 
+@Service
 public class RestaurantServiceClient {
 	 private final RestTemplate restTemplate;
 

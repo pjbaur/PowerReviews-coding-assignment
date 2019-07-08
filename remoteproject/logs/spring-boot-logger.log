@@ -1421,3 +1421,179 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 2019-07-08 12:12:27,506 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-3] HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
 2019-07-08 12:12:27,512 INFO com.zaxxer.hikari.HikariDataSource [Thread-3] HikariPool-1 - Shutdown initiated...
 2019-07-08 12:12:27,514 INFO com.zaxxer.hikari.HikariDataSource [Thread-3] HikariPool-1 - Shutdown completed.
+2019-07-08 14:37:43,617 INFO org.springframework.boot.StartupInfoLogger [main] Starting ApplicationTests on PJB-MBP113.local with PID 53084 (started by paulbaur in /Users/paulbaur/projects/coding-assignment-java/remoteproject)
+2019-07-08 14:37:43,619 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-07-08 14:37:43,655 INFO org.springframework.context.support.AbstractApplicationContext [main] Refreshing org.springframework.web.context.support.GenericWebApplicationContext@4278284b: startup date [Mon Jul 08 14:37:43 CDT 2019]; root of context hierarchy
+2019-07-08 14:37:43,847 WARN org.springframework.http.converter.json.Jackson2ObjectMapperBuilder [background-preinit] For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2019-07-08 14:37:44,778 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$7543771a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-08 14:37:44,968 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2019-07-08 14:37:45,135 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2019-07-08 14:37:45,189 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-07-08 14:37:45,210 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-07-08 14:37:45,307 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.2.17.Final}
+2019-07-08 14:37:45,308 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2019-07-08 14:37:45,355 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-07-08 14:37:45,501 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2019-07-08 14:37:46,138 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [main] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@160b4809'
+2019-07-08 14:37:46,141 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-07-08 14:37:46,439 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [main] HHH000397: Using ASTQueryTranslatorFactory
+2019-07-08 14:37:46,904 INFO org.springframework.web.servlet.handler.AbstractUrlHandlerMapping [main] Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-07-08 14:37:47,196 INFO org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter [main] Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@4278284b: startup date [Mon Jul 08 14:37:43 CDT 2019]; root of context hierarchy
+2019-07-08 14:37:47,236 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-07-08 14:37:47,270 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant],methods=[PUT],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<com.powerreviews.project.persistence.RestaurantEntity> com.powerreviews.project.controller.RestaurantController.put(com.powerreviews.project.persistence.RestaurantEntity)
+2019-07-08 14:37:47,271 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant/{id}],methods=[DELETE],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<com.powerreviews.project.persistence.RestaurantEntity> com.powerreviews.project.controller.RestaurantController.delete(java.lang.Integer)
+2019-07-08 14:37:47,272 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant],methods=[GET],produces=[application/hal+json]}" onto public org.springframework.hateoas.Resources<com.powerreviews.project.persistence.RestaurantEntity> com.powerreviews.project.controller.RestaurantController.getAllRestaurants()
+2019-07-08 14:37:47,272 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant/{restaurantId}/{reviewId}],methods=[GET],produces=[application/json]}" onto public com.powerreviews.project.persistence.ReviewEntity com.powerreviews.project.controller.RestaurantController.getReviewById(java.lang.Integer,java.lang.Integer)
+2019-07-08 14:37:47,273 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant/{restaurantId}/reviews],methods=[GET],produces=[application/hal+json]}" onto public org.springframework.hateoas.Resources<com.powerreviews.project.persistence.ReviewEntity> com.powerreviews.project.controller.RestaurantController.getReviewsForRestaurant(java.lang.Integer)
+2019-07-08 14:37:47,274 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant/type/{type}],methods=[GET],produces=[application/hal+json]}" onto public org.springframework.hateoas.Resources<com.powerreviews.project.persistence.RestaurantEntity> com.powerreviews.project.controller.RestaurantController.getRestaurantsByType(java.lang.String)
+2019-07-08 14:37:47,274 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<java.lang.Object> com.powerreviews.project.controller.RestaurantController.postNewRestaurant(com.powerreviews.project.persistence.RestaurantEntity)
+2019-07-08 14:37:47,275 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant/{id}],methods=[GET],produces=[application/json]}" onto public org.springframework.hateoas.Resource<com.powerreviews.project.persistence.RestaurantEntity> com.powerreviews.project.controller.RestaurantController.findById(java.lang.Integer)
+2019-07-08 14:37:47,277 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/reviews/restaurant/{restaurantId}],methods=[GET],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.powerreviews.project.persistence.ReviewEntity>> com.powerreviews.project.controller.ReviewController.getAllReviewsForRestaurant(java.lang.Integer)
+2019-07-08 14:37:47,278 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/reviews],methods=[POST],produces=[application/hal+json]}" onto public org.springframework.http.ResponseEntity<java.lang.Object> com.powerreviews.project.controller.ReviewController.post(com.powerreviews.project.persistence.ReviewEntity)
+2019-07-08 14:37:47,278 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/reviews/{id}],methods=[GET],produces=[application/json]}" onto public org.springframework.hateoas.Resource<com.powerreviews.project.persistence.ReviewEntity> com.powerreviews.project.controller.ReviewController.getReviewById(java.lang.Integer)
+2019-07-08 14:37:47,279 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/reviews],methods=[GET],produces=[application/hal+json]}" onto public org.springframework.hateoas.Resources<com.powerreviews.project.persistence.ReviewEntity> com.powerreviews.project.controller.ReviewController.getAllReviews()
+2019-07-08 14:37:47,282 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-07-08 14:37:47,283 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-07-08 14:37:47,315 INFO org.springframework.web.servlet.handler.AbstractUrlHandlerMapping [main] Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-07-08 14:37:47,316 INFO org.springframework.web.servlet.handler.AbstractUrlHandlerMapping [main] Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-07-08 14:37:47,329 INFO org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [main] Detected @ExceptionHandler methods in customExceptionHandler
+2019-07-08 14:37:47,612 INFO org.springframework.boot.StartupInfoLogger [main] Started ApplicationTests in 4.323 seconds (JVM running for 5.514)
+2019-07-08 14:37:47,780 INFO com.powerreviews.project.exception.validator.CommentValidator [main] [i, love, sushi]
+2019-07-08 14:37:47,788 INFO com.powerreviews.project.exception.validator.CommentValidator [main] [yum, burritos, too]
+2019-07-08 14:37:47,790 INFO com.powerreviews.project.exception.validator.CommentValidator [main] [love, the, quacamole]
+2019-07-08 14:37:47,790 INFO com.powerreviews.project.exception.validator.CommentValidator [main] [great, margueritas]
+2019-07-08 14:37:47,815 ERROR org.springframework.test.context.TestContextManager [main] Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2805d709] to prepare test instance [com.powerreviews.project.ApplicationTests@30d15e4a]
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'com.powerreviews.project.ApplicationTests': Unsatisfied dependency expressed through field 'client'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.powerreviews.project.client.RestaurantServiceClient' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:587)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1348)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:399)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:118)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:44)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:246)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:379)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:340)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:125)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:413)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.powerreviews.project.client.RestaurantServiceClient' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1509)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1104)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	... 31 common frames omitted
+2019-07-08 14:37:47,930 INFO org.springframework.context.support.AbstractApplicationContext [Thread-3] Closing org.springframework.web.context.support.GenericWebApplicationContext@4278284b: startup date [Mon Jul 08 14:37:43 CDT 2019]; root of context hierarchy
+2019-07-08 14:37:47,940 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-3] Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-07-08 14:37:47,941 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-3] HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+2019-07-08 14:37:47,952 INFO com.zaxxer.hikari.HikariDataSource [Thread-3] HikariPool-1 - Shutdown initiated...
+2019-07-08 14:37:47,954 INFO com.zaxxer.hikari.HikariDataSource [Thread-3] HikariPool-1 - Shutdown completed.
+2019-07-08 14:41:48,135 INFO org.springframework.boot.StartupInfoLogger [main] Starting ApplicationTests on PJB-MBP113.local with PID 53119 (started by paulbaur in /Users/paulbaur/projects/coding-assignment-java/remoteproject)
+2019-07-08 14:41:48,136 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-07-08 14:41:48,162 INFO org.springframework.context.support.AbstractApplicationContext [main] Refreshing org.springframework.web.context.support.GenericWebApplicationContext@9573584: startup date [Mon Jul 08 14:41:48 CDT 2019]; root of context hierarchy
+2019-07-08 14:41:48,264 WARN org.springframework.http.converter.json.Jackson2ObjectMapperBuilder [background-preinit] For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2019-07-08 14:41:49,107 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ea281022] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-08 14:41:49,281 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2019-07-08 14:41:49,412 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2019-07-08 14:41:49,459 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [main] Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-07-08 14:41:49,477 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-07-08 14:41:49,546 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.2.17.Final}
+2019-07-08 14:41:49,547 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2019-07-08 14:41:49,580 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-07-08 14:41:49,682 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2019-07-08 14:41:50,186 INFO org.hibernate.tool.schema.internal.SchemaCreatorImpl [main] HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@4f281aaf'
+2019-07-08 14:41:50,189 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-07-08 14:41:50,527 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [main] HHH000397: Using ASTQueryTranslatorFactory
+2019-07-08 14:41:50,945 INFO org.springframework.web.servlet.handler.AbstractUrlHandlerMapping [main] Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-07-08 14:41:51,078 INFO org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter [main] Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@9573584: startup date [Mon Jul 08 14:41:48 CDT 2019]; root of context hierarchy
+2019-07-08 14:41:51,234 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-07-08 14:41:51,267 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant],methods=[PUT],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<com.powerreviews.project.persistence.RestaurantEntity> com.powerreviews.project.controller.RestaurantController.put(com.powerreviews.project.persistence.RestaurantEntity)
+2019-07-08 14:41:51,269 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant/{id}],methods=[DELETE],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<com.powerreviews.project.persistence.RestaurantEntity> com.powerreviews.project.controller.RestaurantController.delete(java.lang.Integer)
+2019-07-08 14:41:51,270 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant],methods=[GET],produces=[application/hal+json]}" onto public org.springframework.hateoas.Resources<com.powerreviews.project.persistence.RestaurantEntity> com.powerreviews.project.controller.RestaurantController.getAllRestaurants()
+2019-07-08 14:41:51,270 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant/{restaurantId}/{reviewId}],methods=[GET],produces=[application/json]}" onto public com.powerreviews.project.persistence.ReviewEntity com.powerreviews.project.controller.RestaurantController.getReviewById(java.lang.Integer,java.lang.Integer)
+2019-07-08 14:41:51,271 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant/{restaurantId}/reviews],methods=[GET],produces=[application/hal+json]}" onto public org.springframework.hateoas.Resources<com.powerreviews.project.persistence.ReviewEntity> com.powerreviews.project.controller.RestaurantController.getReviewsForRestaurant(java.lang.Integer)
+2019-07-08 14:41:51,273 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant/type/{type}],methods=[GET],produces=[application/hal+json]}" onto public org.springframework.hateoas.Resources<com.powerreviews.project.persistence.RestaurantEntity> com.powerreviews.project.controller.RestaurantController.getRestaurantsByType(java.lang.String)
+2019-07-08 14:41:51,274 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<java.lang.Object> com.powerreviews.project.controller.RestaurantController.postNewRestaurant(com.powerreviews.project.persistence.RestaurantEntity)
+2019-07-08 14:41:51,274 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/restaurant/{id}],methods=[GET],produces=[application/json]}" onto public org.springframework.hateoas.Resource<com.powerreviews.project.persistence.RestaurantEntity> com.powerreviews.project.controller.RestaurantController.findById(java.lang.Integer)
+2019-07-08 14:41:51,276 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/reviews],methods=[POST],produces=[application/hal+json]}" onto public org.springframework.http.ResponseEntity<java.lang.Object> com.powerreviews.project.controller.ReviewController.post(com.powerreviews.project.persistence.ReviewEntity)
+2019-07-08 14:41:51,277 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/reviews/restaurant/{restaurantId}],methods=[GET],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.powerreviews.project.persistence.ReviewEntity>> com.powerreviews.project.controller.ReviewController.getAllReviewsForRestaurant(java.lang.Integer)
+2019-07-08 14:41:51,278 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/reviews/{id}],methods=[GET],produces=[application/json]}" onto public org.springframework.hateoas.Resource<com.powerreviews.project.persistence.ReviewEntity> com.powerreviews.project.controller.ReviewController.getReviewById(java.lang.Integer)
+2019-07-08 14:41:51,278 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/reviews],methods=[GET],produces=[application/hal+json]}" onto public org.springframework.hateoas.Resources<com.powerreviews.project.persistence.ReviewEntity> com.powerreviews.project.controller.ReviewController.getAllReviews()
+2019-07-08 14:41:51,282 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-07-08 14:41:51,283 INFO org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry [main] Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-07-08 14:41:51,318 INFO org.springframework.web.servlet.handler.AbstractUrlHandlerMapping [main] Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-07-08 14:41:51,318 INFO org.springframework.web.servlet.handler.AbstractUrlHandlerMapping [main] Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-07-08 14:41:51,332 INFO org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [main] Detected @ExceptionHandler methods in customExceptionHandler
+2019-07-08 14:41:51,595 INFO org.springframework.boot.StartupInfoLogger [main] Started ApplicationTests in 3.74 seconds (JVM running for 4.682)
+2019-07-08 14:41:51,756 INFO com.powerreviews.project.exception.validator.CommentValidator [main] [i, love, sushi]
+2019-07-08 14:41:51,766 INFO com.powerreviews.project.exception.validator.CommentValidator [main] [yum, burritos, too]
+2019-07-08 14:41:51,767 INFO com.powerreviews.project.exception.validator.CommentValidator [main] [love, the, quacamole]
+2019-07-08 14:41:51,768 INFO com.powerreviews.project.exception.validator.CommentValidator [main] [great, margueritas]
+2019-07-08 14:41:51,794 ERROR org.springframework.test.context.TestContextManager [main] Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6e0f5f7f] to prepare test instance [com.powerreviews.project.ApplicationTests@53dba9cd]
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'com.powerreviews.project.ApplicationTests': Unsatisfied dependency expressed through field 'server'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.test.web.client.MockRestServiceServer' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:587)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1348)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:399)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:118)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:44)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:246)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:379)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:340)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:125)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:413)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.test.web.client.MockRestServiceServer' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1509)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1104)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	... 31 common frames omitted
+2019-07-08 14:41:51,899 INFO org.springframework.context.support.AbstractApplicationContext [Thread-2] Closing org.springframework.web.context.support.GenericWebApplicationContext@9573584: startup date [Mon Jul 08 14:41:48 CDT 2019]; root of context hierarchy
+2019-07-08 14:41:51,906 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-2] Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-07-08 14:41:51,906 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-2] HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+2019-07-08 14:41:51,911 INFO com.zaxxer.hikari.HikariDataSource [Thread-2] HikariPool-1 - Shutdown initiated...
+2019-07-08 14:41:51,914 INFO com.zaxxer.hikari.HikariDataSource [Thread-2] HikariPool-1 - Shutdown completed.
