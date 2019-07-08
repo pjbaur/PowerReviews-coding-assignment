@@ -2,30 +2,30 @@ package com.powerreviews.project.persistence;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity(name = "user")
+@JsonIgnoreProperties({ "id" })
 public class UserEntity {
-	//TODO - We want the Id to be assigned automatically. Delete the Setter and update Constructor.
+	//TODO - Use Spring's auto-generated ID.
     @Id
-    private Integer id;
+    @GeneratedValue
+    private Integer userId;
 
     @Column
     private String name;
 
     public UserEntity(){}
 
-    public UserEntity(Integer id, String name) {
-        this.id = id;
+    public UserEntity(String name) {
         this.name = name;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getUserId() {
+        return userId;
     }
 
     public String getName() {
@@ -36,12 +36,8 @@ public class UserEntity {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-    	// TODO - Do I want a { or a [ ?
-        return "UserEntity{" +
-                "id=" + id +
-                "name='" + name + '\'' +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return String.format("UserEntity {userId=%s, name=%s}", userId, name);
+	}
 }

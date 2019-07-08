@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,8 +13,10 @@ import org.springframework.context.annotation.Bean;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.powerreviews.project.persistence.Restaurant;
+import com.powerreviews.project.controller.RestaurantController;
+import com.powerreviews.project.persistence.RestaurantEntity;
 import com.powerreviews.project.persistence.RestaurantRepository;
+import com.powerreviews.project.persistence.ReviewEntity;
 import com.powerreviews.project.persistence.ReviewRepository;
 import com.powerreviews.project.persistence.UserEntity;
 import com.powerreviews.project.persistence.UserRepository;
@@ -22,6 +25,8 @@ import com.powerreviews.project.persistence.UserRepository;
 //@EnableConfigServer
 public class Application {
 
+	org.slf4j.Logger logger = LoggerFactory.getLogger(Application.class);
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
@@ -32,10 +37,10 @@ public class Application {
 			// read json and write to db
 			ObjectMapper mapper = new ObjectMapper();
 
-			TypeReference<List<Restaurant>> restaurantTypeReference = new TypeReference<List<Restaurant>>(){};
+			TypeReference<List<RestaurantEntity>> restaurantTypeReference = new TypeReference<List<RestaurantEntity>>(){};
 			InputStream inputStream = TypeReference.class.getResourceAsStream("/json/restaurants.json");
 			try {
-				List<Restaurant> restaurants = mapper.readValue(inputStream, restaurantTypeReference);
+				List<RestaurantEntity> restaurants = mapper.readValue(inputStream, restaurantTypeReference);
 				//save restaurants to the database
 				restaurantRepository.saveAll(restaurants);
 			} catch (IOException e){
@@ -52,15 +57,15 @@ public class Application {
 				System.out.println("Unable to save users: " + e.getMessage());
 			}
 			
-//			TypeReference<List<Review>> reviewTypeReference = new TypeReference<List<Review>>(){};
-//			inputStream = TypeReference.class.getResourceAsStream("/json/reviews.json");
-//			try {
-//				List<Review> reviews = mapper.readValue(inputStream, reviewTypeReference);
-//				//save users to the database
-//				reviewRepository.saveAll(reviews);
-//			} catch (IOException e){
-//				System.out.println("Unable to save users: " + e.getMessage());
-//			}
+			TypeReference<List<ReviewEntity>> reviewTypeReference = new TypeReference<List<ReviewEntity>>(){};
+			inputStream = TypeReference.class.getResourceAsStream("/json/reviews.json");
+			try {
+				List<ReviewEntity> reviews = mapper.readValue(inputStream, reviewTypeReference);
+				//save reviews to the database
+				reviewRepository.saveAll(reviews);
+			} catch (IOException e){
+				System.out.println("Unable to save users: " + e.getMessage());
+			}
 		};
 	}
 }

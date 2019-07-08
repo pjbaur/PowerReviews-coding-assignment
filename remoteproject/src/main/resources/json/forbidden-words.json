@@ -1,0 +1,34 @@
+[
+	{
+		"reviewId": 1,
+		"userId": 1,
+		"restaurantId": 3,
+		"comment": "I love sushi!",
+		"rating": 5,
+		"timestamp": "2019-07-04T11:23:11.123"
+	},
+	{
+		"reviewId": 2,
+		"userId": 1,
+		"restaurantId": 1,
+		"comment": "Yum - burritos, too!",
+		"rating": 5,
+		"timestamp": "2019-03-04T11:24:22.123+0000"
+	},
+	{
+		"reviewId": 3,
+		"userId": 2,
+		"restaurantId": 1,
+		"comment": "Love the quacamole!",
+		"rating": 4,
+		"timestamp": "2019-07-04T07:25:33.123+0000"
+	},
+	{
+		"reviewId": 4,
+		"userId": 1,
+		"restaurantId": 1,
+		"comment": "Great margueritas!",
+		"rating": 4,
+		"timestamp": "2019-07-04T11:25:33.123+0000"
+	}
+]
