@@ -1,36 +1,43 @@
 package com.powerreviews.project;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
-
-import java.io.IOException;
-
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.reactive.server.WebTestClient;
 
-import okhttp3.Call;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@AutoConfigureWebTestClient
 public class IntegrationTests {
-	private static final String APPLICATION_PORT = "8080";
-	private static final String BASE_URL = "http://127.0.0.1:" + APPLICATION_PORT;
 
-	OkHttpClient client;
-
-	@Before
-	public void init() {
-		client = new OkHttpClient();
-	}
-
+	@Autowired
+	private WebTestClient webClient;
+	
 	@Test
-	public void whenGetRequest_thenCorrect() throws IOException {
-		final Request request = new Request.Builder().url(BASE_URL + "/restaurant").build();
-
-		final Call call = client.newCall(request);
-		final Response response = call.execute();
-
-		assertThat(response.code(), equalTo(200));
+	public void whenGetRequestAllRestaurants_thenCorrect() {
+		this.webClient.get().uri("/restaurant").exchange()
+		.expectStatus().isOk();
+	}
+	
+	@Test
+	public void whenGetRequestRestaurantByType_thenCorrect() {
+		this.webClient.get().uri("/restaurant/type/Tacos").exchange()
+		.expectStatus().isOk();
+	}
+	
+	@Test
+	public void whenGetRequestRestaurantById_thenCorrect() {
+		this.webClient.get().uri("/restaurant/1").exchange()
+		.expectStatus().isOk();
+	}
+	
+	@Test
+	public void whenGetRequestReviewsForARestaurant_thenCorrect() {
+		this.webClient.get().uri("/reviews/restaurant/1").exchange()
+		.expectStatus().isOk();
 	}
 }
