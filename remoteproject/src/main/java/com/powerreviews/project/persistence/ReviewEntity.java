@@ -1,19 +1,23 @@
 package com.powerreviews.project.persistence;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.hateoas.ResourceSupport;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.powerreviews.project.exception.validator.Comment;
+import com.powerreviews.project.exception.validator.User;
 
 /**
  * A review contains user information, comments, a rating and a date.
@@ -22,13 +26,15 @@ import com.powerreviews.project.exception.validator.Comment;
  *
  */
 @Entity(name = "review")
-public class ReviewEntity extends ResourceSupport {
+public class ReviewEntity extends ResourceSupport implements Serializable {
 	// TODO - implement isolated (table-specific) IDs
 	@Id
-	@GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer reviewId;
 
 	@Column
+	@User
+	@NotNull(message = "userId must not be null.")
 	private Integer userId;
 
 	@Column

@@ -3,17 +3,16 @@ package com.powerreviews.project;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 //import org.springframework.cloud.config.server.EnableConfigServer;
 import org.springframework.context.annotation.Bean;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.powerreviews.project.controller.RestaurantController;
+import com.powerreviews.project.persistence.BlockedUserEntity;
+import com.powerreviews.project.persistence.BlockedUserRepository;
 import com.powerreviews.project.persistence.RestaurantEntity;
 import com.powerreviews.project.persistence.RestaurantRepository;
 import com.powerreviews.project.persistence.ReviewEntity;
@@ -32,7 +31,11 @@ public class Application {
 	}
 
 	@Bean
-	CommandLineRunner runner(RestaurantRepository restaurantRepository, UserRepository userRepository, ReviewRepository reviewRepository) {
+	CommandLineRunner runner(
+	    RestaurantRepository restaurantRepository, 
+	    UserRepository userRepository, 
+	    ReviewRepository reviewRepository,
+	    BlockedUserRepository blockedUserRepository) {
 		return args -> {
 			// read json and write to db
 			ObjectMapper mapper = new ObjectMapper();
@@ -66,6 +69,16 @@ public class Application {
 			} catch (IOException e){
 				System.out.println("Unable to save users: " + e.getMessage());
 			}
+			
+			TypeReference<List<BlockedUserEntity>> blockedUserTypeReference = new TypeReference<List<BlockedUserEntity>>(){};
+            inputStream = TypeReference.class.getResourceAsStream("/json/blocked-users.json");
+            try {
+                List<BlockedUserEntity> blockedUsers = mapper.readValue(inputStream, blockedUserTypeReference);
+                //save Blocked Users to the database
+                blockedUserRepository.saveAll(blockedUsers);
+            } catch (IOException e){
+                System.out.println("Unable to save Blocked Users: " + e.getMessage());
+            }
 		};
 	}
 }

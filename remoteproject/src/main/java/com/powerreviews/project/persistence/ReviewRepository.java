@@ -6,10 +6,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ReviewRepository extends CrudRepository<ReviewEntity, Integer>{
-    @Query("SELECT MAX(reviewId) FROM review")
-    int maxId();
-	
+public interface ReviewRepository extends CrudRepository<ReviewEntity, Integer>{	
     @Query("SELECT r FROM review r WHERE r.restaurantId = ?1")
     List<ReviewEntity> findByAndSort(Integer restaurantId, Sort sort);
 

@@ -1,4 +1,4 @@
-package com.powerreviews.project;
+package com.powerreviews.project.integration;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +12,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient
-public class IntegrationTests {
+public class GetTests {
 
 	@Autowired
 	private WebTestClient webClient;
@@ -40,4 +40,6 @@ public class IntegrationTests {
 		this.webClient.get().uri("/reviews/restaurant/1").exchange()
 		.expectStatus().isOk();
 	}
+	
+	
 }
