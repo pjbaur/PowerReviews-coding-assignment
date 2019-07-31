@@ -1,0 +1,5 @@
+curl -i -X GET http://localhost:8080/restaurant/1
+
+curl -i -X POST -d "{\"comment\":\"I like sushi\", \"rating\":5, \"timestamp\": \"2019-07-04T11:22:33.123\"}" -H "Content-Type:application/json" http://localhost:8080/reviews
+
+curl -i -X PUT -H "Content-Type:text/uri-list" -d "http://localhost:8080/restaurants/3" http://localhost:8080/books/1/library
